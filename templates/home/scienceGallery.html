@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block title%}Scientist's Gallery{%endblock%}
+{%block content%}
+
+<h1 class="font-weight-bold text-center mt-4">Gallery</h1>
+<br>
+<div class="container">
+<div class="row">
+        {%for Scientist in Scientists%}
+        <div class=" col-sm-6 col-md-4 col-lg-3 my-2">
+           <div class="card lshadow"> 
+            <img class="card-img-top w-100" src="/media/{{Scientist.Scientist_thumbnail}}">
+            <div class="card-body pt-2">
+                <div class="half-height mt-0">
+
+                    <h6 class="card-head font-weight-bold text-blue georgfont mt-0"><a href="/ScientistProfile/{{Scientist.Scientist_title}}" class="stretched-link text-decoration-none text-blue">{{Scientist.Scientist_title|upper}}</a></h6>
+                </div>
+                <div class="height1">
+
+                    <small class="content text-muted">{{Scientist.Scientist_content|truncatewords:8|safe}}.</small>
+                </div>
+            </div>
+            </div>
+        </div>
+        {%endfor%}
+</div>
+</div>
+
+{% endblock content%}

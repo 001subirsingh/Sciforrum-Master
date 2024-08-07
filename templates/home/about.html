@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block title%}Science Forum-home{%endblock%}
+{%block content%}
+<div class="jumbotron">
+<h1 class="text-center display-4">About Us</h1>
+<div class="container">
+  <p class="lead text-justify chhotafont3">The Science Forum guides and helps students form a staunch scientific outlook, exemplifying the need of the hour– to defeat curiosity and feed knowledge to the mind. 
+We, at Science Forum, organise lectures and demonstrations by renowned scientists and professors to enlighten the students about ongoing scientific research and breakthroughs in the world of science. 
+We also organise group discussions to enable students enhance their sphere of knowledge by interacting with other students studying different disciples and building a broad sense of scientific approach. 
+We organise trips to renowned laboratories and scientific landmarks where students can explore and have a hands-on experience in modern research and technology, gaining experience and inspiration from these excursions. 
+During the lockdown, we’ve been organising several webinars and web events for students so that they don’t lose on the imperative experience to develop a remarkable scientific outlook. 
+Paper presentations and team building activities are organised that enable the students to work together on major breakthroughs, enhancing teamwork skills and leadership qualities and developing a passion for research. 
+
+There are also several art and videography contests held to promote an interdisciplinary approach to science and evoking a newfound interest in students from non-science disciplines through this endeavour. 
+
+Science Forum exhibits an expansive array of opportunities for students to explore and learn new things in the world of science, and we are always open to doing new and creative things to promote interest and passion in this discipline.</p>
+ </div>
+</div>
+ <br>
+<div class="container">
+    <div class="row text-center mx-lg-5 ">
+        <div class="card-deck mx-lg-5">
+            <div class="card lshadow mx-lg-5">
+                <div class="height4 overflow-hidden"> 
+                    <img class="card-img-top" src="/media/{{profiles.0.Profile_thumbnail}}" alt="Card image cap">
+                   </div> 
+                    <div class="card-body">
+                    <h5 class="card-title text-blue font-weight-bold georgfont">{{profiles.0.Profile_title}}</h5>
+                    <h6 class="card-title text-muted">{{profiles.0.Profile_Post}}</h6>
+                    <p class="card-text chhotafont">{{profiles.0.Profile_content}}</p>
+                </div>
+                <div class="card-footer">
+                    
+                    <a href="mailto:{{profiles.0.Profile_email}}" class="btn btn-primary">Contact Email</a>
+                    </div>
+            </div>
+            <div class="card lshadow mx-lg-5">
+                <div class="height4 overflow-hidden"> 
+                    <img class="card-img-top" src="/media/{{profiles.1.Profile_thumbnail}}" alt="Card image cap">
+                   </div> 
+                    <div class="card-body ">
+                    <h5 class="card-title text-blue font-weight-bold georgfont">{{profiles.1.Profile_title}}</h5>
+                    <h6 class="card-title text-muted">{{profiles.1.Profile_Post}}</h6>
+                    <p class="card-text chhotafont">{{profiles.1.Profile_content}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="mailto:{{profiles.1.Profile_email}}" class="btn btn-primary">Contact Email</a>
+
+                    </div>
+            </div>
+        </div>
+
+        <div class="row d-flex">
+        {%for profile in profiles|slice:"2:"%}
+          <div class="col-lg-3 col-md-2 my-2 mx-auto">
+
+              <div class="card lshadow height5" style="">
+                  <div class="height2 overflow-hidden"> 
+                      <img class="card-img-top" src="/media/{{profile.Profile_thumbnail}}" alt="Card image cap">
+                    </div> 
+                    <div class="card-body py-0">
+                        <h5 class="card-title text-blue font-weight-bold my-0 georgfont">{{profile.Profile_title}}</h5>
+                        <h6 class="card-title text-muted my-0">{{profile.Profile_Post}}</h6>
+                        <hr class="my-1">
+                        <p class="card-text chhotafont text-justify">{{profile.Profile_content}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="mailto:{{profile.Profile_email}}" class="btn btn-primary">Contact Email</a>
+                    </div>
+              </div>
+
+            </div>
+                {%endfor%}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

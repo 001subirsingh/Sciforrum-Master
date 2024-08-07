@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{%load static %}
+{%block title%}Science Forum-home{%endblock%}
+{%block content%}
+<div class="container mt-5 ">
+    <div class="row  ">
+        <div class="col-lg-6 my-2">
+            <div class="card border hshadow  " style="">
+                <div class="height4 overflow-hidden">
+
+                    <img class="img-fluid  w-100" src="/media/{{blists.0.thumbnail}}" alt="Card image">
+                </div>
+                <div class="card-body border height1 overflow-hidden pt-2">
+                    <a href="/blogs/blogpost/{{blists.0.blog_title}}" class="text-decoration-none stretched-link georgfont"> <h4 class="card-title font-weight-bold text-blue">{{blists.0.blog_title|upper}}</h4></a>
+                  <small class="card-text text-muted lh">{{blists.0.blog_content|truncatewords:15|safe }}</small>
+                </div>
+                <div class="card-footer py-0 overflow-hidden mb-0" style="height:40px;">
+                    <p class="my-0 "> {{blists.0.blog_writer}}|<small class="text-muted">{{blists.0.blog_date}}</small> </p>
+             </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 my-2">
+            <div class="card border hshadow  " style="">
+                <div class="height4 overflow-hidden">
+
+                    <img class="img-fluid  w-100" src="/media/{{blists.1.thumbnail}}" alt="Card image">
+                </div>
+                <div class="card-body border height1 overflow-hidden pt-2">
+                    <a href="/blogs/blogpost/{{blists.1.blog_title}}" class="text-decoration-none stretched-link georgfont"> <h4 class="card-title font-weight-bold text-blue">{{blists.1.blog_title|upper}}</h4></a>
+                  <small class="card-text text-muted lh">{{blists.1.blog_content|truncatewords:15|safe }}</small>
+                </div>
+                <div class="card-footer py-0 overflow-hidden mb-0" style="height:40px;">
+                    <p class="my-0 "> {{blists.1.blog_writer}}|<small class="text-muted">{{blists.1.blog_date}}</small> </p>
+             </div>
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="row d-flex">   
+        
+        {%for blist in blists|slice:"2:"%}
+        <div class="col-md-4 my-3  aos-animate" data-aos="zoom-in">
+            <div class="card border hshadow px-0 py-0 " style="">
+                <div class="height2 overflow-hidden ">
+                    <img class="card-img-top" src="/media/{{blist.thumbnail}}" alt="Card image">
+
+                </div>
+                <div class="card-body height1 overflow-hidden pt-2">
+                    <a href="/blogs/blogpost/{{blist.blog_title}}" class="text-decoration-none stretched-link"><h5 class="card-title font-weight-bold text-blue my-0 georgfont" >{{blist.blog_title|upper}}</h5></a>
+                  <small class="my-2 text-muted content">{{blist.blog_content|truncatewords:15|safe}}</small>
+                 
+                </div>
+                <div class="card-footer py-0 overflow-hidden" style="height:40px;">
+                       <p class="m-0"> {{blist.blog_writer}}|<small class="text-muted">{{blist.blog_date}}</small> </p>
+                </div>
+              </div>
+        </div>
+        {%endfor%}
+
+    </div>
+</div>
+<div class="text-center">
+    
+    <ul class="pagination justify-content-center">
+
+        {% if blists.has_previous%}
+       <li class="page-item"> <a href="?page={{blists.previous_page_number}}" class="page-link"> 
+           <i class="fas fa-angle-double-left"></i>prev</a></li>
+       {%endif%}
+       <li class="page-item"><a href="?page=1" class="page-link">1</a></li>...
+       <li class="page-item"><a href="?page={{tpage}}" class="page-link">{{tpage}}</a></li>
+       {% if blists.has_next%}
+       <li class="page-item"><a href="?page={{blists.next_page_number}}" class="page-link">
+           next<i class="fas fa-angle-double-right"></i></a></li>
+       {%endif %}
+    </ul>
+</div>
+
+
+{%endblock%}
+
+
